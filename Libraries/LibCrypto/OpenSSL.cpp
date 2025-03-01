@@ -27,6 +27,11 @@ ErrorOr<OpenSSL_MD_CTX> OpenSSL_MD_CTX::create()
     return OpenSSL_MD_CTX(OPENSSL_TRY_PTR(EVP_MD_CTX_new()));
 }
 
+ErrorOr<OpenSSL_CIPHER_CTX> OpenSSL_CIPHER_CTX::create()
+{
+    return OpenSSL_CIPHER_CTX(OPENSSL_TRY_PTR(EVP_CIPHER_CTX_new()));
+}
+
 ErrorOr<OpenSSL_BN> unsigned_big_integer_to_openssl_bignum(UnsignedBigInteger const& integer)
 {
     auto bn = TRY(OpenSSL_BN::create());
@@ -47,6 +52,8 @@ ErrorOr<UnsignedBigInteger> openssl_bignum_to_unsigned_big_integer(OpenSSL_BN co
 ErrorOr<StringView> hash_kind_to_openssl_digest_name(Hash::HashKind hash)
 {
     switch (hash) {
+    case Hash::HashKind::MD5:
+        return "MD5"sv;
     case Hash::HashKind::SHA1:
         return "SHA1"sv;
     case Hash::HashKind::SHA256:

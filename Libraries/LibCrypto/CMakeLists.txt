@@ -5,7 +5,7 @@ set(SOURCES
     ASN1/ASN1.cpp
     ASN1/DER.cpp
     ASN1/PEM.cpp
-    Authentication/GHash.cpp
+    Authentication/HMAC.cpp
     BigFraction/BigFraction.cpp
     BigInt/Algorithms/BitwiseOperations.cpp
     BigInt/Algorithms/Division.cpp
@@ -21,7 +21,6 @@ set(SOURCES
     Checksum/cksum.cpp
     Checksum/CRC32.cpp
     Cipher/AES.cpp
-    Cipher/Cipher.cpp
     Curves/EdwardsCurve.cpp
     Curves/SECPxxxr1.cpp
     Hash/BLAKE2b.cpp
